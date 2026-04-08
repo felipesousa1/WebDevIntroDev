@@ -1,10 +1,8 @@
-# FastCards
-
 Projeto desenvolvido para a disciplina MAC0350 por Felipe Sousa dos Santos (NUSP:12567141).
 
 O FastCards é uma aplicação web de flashcards focada em repetição espaçada (Spaced Repetition). O objetivo é facilitar a memorização de conteúdos através da criação de decks e cards, onde o sistema agenda automaticamente as revisões baseando-se no desempenho do usuário.
 
-### Tecnologias utilizadas
+TECNOLOGIAS UTILIZADAS
 
 * Back-end: Python com FastAPI.
 * Banco de Dados: SQLite com SQLModel (ORM).
@@ -13,7 +11,7 @@ O FastCards é uma aplicação web de flashcards focada em repetição espaçada
 
 ---
 
-### Como rodar o projeto
+COMO RODAR O PROJETO
 
 O projeto utiliza um ambiente virtual para gerenciar as dependências. Siga os passos abaixo no terminal:
 
@@ -36,6 +34,6 @@ O sistema estará disponível em: http://127.0.0.1:8000
 
 ---
 
-### Suporte
+SUPORTE
 
 Caso encontre algum bug ou tenha alguma dificuldade técnica para rodar a aplicação, por favor, abra uma "Issue" detalhando o problema.
