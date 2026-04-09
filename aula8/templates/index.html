@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Aula 8 - HTMX</title>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.js" integrity="sha384-ezjq8118wdwdRMj+nX4bevEi+cDLTbhLAeFF688VK8tPDGeLUe0WoY2MZtSla72F" crossorigin="anonymous"></script>
+    
+    <style>
+        body { font-family: sans-serif; background: #222; color: #eee; padding: 20px; }
+        .nav-btn { padding: 10px 20px; margin-right: 5px; cursor: pointer; background: #444; color: white; border: none; }
+         /* Ex 3: indicador de aba ativa */
+        .active { border-bottom: 3px solid orange; font-weight: bold; background: #555; }
+        #conteudo-principal { margin-top: 20px; padding: 20px; border: 1px solid #444; background: #333; }
+    </style>
+</head>
+<body>
+
+    <nav id="menu">
+        <button class="nav-btn active" onclick="setActive(this)" hx-get="/abas/curtidas" hx-target="#conteudo-principal">Curtidas</button>
+        <button class="nav-btn" onclick="setActive(this)" hx-get="/abas/jupyter" hx-target="#conteudo-principal">Jupyter</button>
+        <button class="nav-btn" onclick="setActive(this)" hx-get="/abas/professor" hx-target="#conteudo-principal">Professor</button>
+    </nav>
+
+    <div id="conteudo-principal">
+        {% include 'curtidas.html' %}
+    </div>
+
+    <script>
+        function setActive(btn) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        // Ex 4: Shortcut (Shift + Alt + P)
+        document.addEventListener('keyup', function(e) {
+
+            const isAltGr = e.getModifierState('AltGraph') || e.altKey;
+
+            if (e.shiftKey && isAltGr && e.code === 'KeyP') {
+                // Finds the active button, then clicks the next one in the loop
+                const buttons = Array.from(document.querySelectorAll('.nav-btn'));
+                const currentIndex = buttons.findIndex(b => b.classList.contains('active'));
+                const nextIndex = (currentIndex + 1) % buttons.length;
+                
+                // Simulating a click automatically triggers HTMX and the setActive visual indicator
+                buttons[nextIndex].click(); 
+            }
+        });
+    </script>
+</body>
+</html>

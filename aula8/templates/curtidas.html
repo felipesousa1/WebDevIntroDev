@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<div>
+    <h2>Contador de Curtidas: <span id="contador">{{ likes }}</span></h2>
+    
+    <button hx-post="/curtir" hx-target="#contador">Curtir!</button>
+
+    <button hx-post="/curtir?zerar=true" 
+            hx-target="#contador" 
+            hx-confirm="Tem certeza que deseja retirar todas as curtidas?">
+        Retirar Curtidas
+    </button>
+</div>
+
+</html>
