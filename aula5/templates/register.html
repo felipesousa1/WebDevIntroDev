@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Criar Usuário</h2>
+    <input type="text" id="nome" placeholder="Nome">
+    <input type="password" id="senha" placeholder="Senha">
+    <input type="text" id="bio" placeholder="Bio">
+    <button onclick="criarUsuario()">Registrar</button>
+
+    <script>
+        async function criarUsuario() {
+            // 1. Gathers data from the inputs
+            const dados = {
+                nome: document.getElementById('nome').value,
+                senha: document.getElementById('senha').value,
+                bio: document.getElementById('bio').value
+            };
+
+            // 2. Sends the POST request to FastAPI
+            const resposta = await fetch('/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados)
+            });
+
+            // 3. If successful, redirects the browser to the login page
+            if (resposta.ok) {
+                alert("Usuário criado!");
+                window.location.href = "/login"; 
+            }
+        }
+    </script>
+</body>
+</html>
