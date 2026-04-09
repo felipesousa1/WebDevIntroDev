@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <title>Exercício aula 2 para casa</title>
+</head>
+
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+</style>
+
+<body>
+    <button onclick="alternarLuz()">Interruptor</button>
+    <span id="texto-alvo">A luz está APAGADA</span>
+    <br>
+    <h1 id = "num">2</h1>
+    <button onclick="dobrar()">Dobrar</button>
+</body>
+
+    <script>
+        function alternarLuz() {
+            const texto = document.querySelector("#texto-alvo")
+            if (texto.innerHTML === "A luz está APAGADA") {
+                texto.innerHTML = "A luz está ACESA"
+                document.body.style.backgroundColor = "white"
+                document.body.style.color = "black"
+
+            }
+            else {
+                texto.innerHTML = "A luz está APAGADA"
+                document.body.style.backgroundColor = "black"
+                document.body.style.color = "white"
+            }
+        }
+
+        let valor = 2
+        function dobrar(){
+            valor = 2*valor
+            document.querySelector("#num").innerHTML = valor
+            if (valor > 100){
+                alert(`Cuidado, o número ${valor} está ficando muito grande!`)
+            }  
+        }
+    </script>
+
+</html>
